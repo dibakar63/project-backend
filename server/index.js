@@ -15,6 +15,9 @@ const app=express();
 
 connectDB();
 app.use(cors());
+app.get('/',(req,res)=>{
+res.send("Hello");
+})
 app.use('/graphql',graphqlHTTP({
     schema,
     graphiql:process.env.NODE_ENV='developement'
