@@ -12,13 +12,12 @@ const app=express();
 
 //connect to database
 //static files
-app.use(express.static(path.join(__dirname,'../client/build')))
 
-app.get('*',function(req,res){
-    res.sendFile(path.join(__dirname,'../client/build/index.html'))
-})
 connectDB();
 app.use(cors());
+app.get('/',(req,res)=>{
+res.send("Hello");
+})
 app.use('/graphql',graphqlHTTP({
     schema,
     graphiql:process.env.NODE_ENV='developement'
